@@ -22,6 +22,8 @@ public class ProvaEnt implements Serializable {
 	private String name;
 
 	private String level;
+	
+	private String fff;
 
 	
 
@@ -50,5 +52,16 @@ public class ProvaEnt implements Serializable {
 	public void setLevel(String level) {
 		this.level = level;
 	}
+
+	public String getFff() {
+		return fff;
+	}
+
+	@Column(name = "fff")
+	public void setFff(String fff) {
+		this.fff = fff;
+	}
+	
+	
 
 }
