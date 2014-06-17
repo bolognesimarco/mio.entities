@@ -1,54 +1,38 @@
 package mio.entities;
 
-import java.io.Serializable;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fideuram.crm.model.Comunicazione;
+import com.fideuram.crm.model.UtenteCRM;
 
-@Entity
-public class ProvaEnt implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
-	public ProvaEnt() {
-	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
 
-	private String name;
-
-	private String level;
-
-	
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	@Column(name = "name")
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getLevel() {
-		return level;
-	}
-
-	@Column(name = "level")
-	public void setLevel(String level) {
-		this.level = level;
+public class ProvaEnt {
+	public static void main(String[] aa) throws Exception{
+		
+		try {
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("crm");
+			EntityManager em = emf.createEntityManager();
+			
+			Comunicazione com1 = new Comunicazione();
+			UtenteCRM ass = new UtenteCRM();
+			ass.setSigla("mb");
+			com1.setAssegnatario(ass);
+			
+			
+			em.getTransaction().begin();
+			//em.persist(ass);
+			em.persist(com1);
+			em.getTransaction().commit();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
+		
+		System.exit(0);
 	}
 
 
