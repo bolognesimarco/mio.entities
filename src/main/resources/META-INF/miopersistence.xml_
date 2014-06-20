@@ -3,18 +3,19 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 	version="2.1">
 
-	<persistence-unit name="crm" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="crm" transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
 
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
-			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.hbm2ddl.auto" value="validate" />
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource" />
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/crm" />
 			<property name="hibernate.connection.username" value="root" />
 			<property name="hibernate.connection.password" value="root" />
 			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.transaction.manager_lookup_class" value="com.atomikos.icatch.jta.hibernate3.TransactionManagerLookup"/>
 		</properties>
 		
 	</persistence-unit>

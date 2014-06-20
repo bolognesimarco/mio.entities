@@ -3,18 +3,19 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 	version="2.1">
 
-	<persistence-unit name="crm" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="crm" transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
 
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="validate" />
-			<property name="hibernate.connection.driver_class" value="net.sourceforge.jtds.jdbc.Driver" />
-			<property name="hibernate.connection.url" value="jdbc:jtds:sqlserver://fvdssql1c.fidevita.bancafideuram.it:1433;DatabaseName=CRM_C" />
+			<property name="hibernate.connection.driver_class" value="com.microsoft.sqlserver.jdbc.SQLServerXADataSource" />
+			<property name="hibernate.connection.url" value="jdbc:sqlserver://fvdssql1c.fidevita.bancafideuram.it:1433;DatabaseName=CRM_C" />
 			<property name="hibernate.connection.username" value="crm001" />
 			<property name="hibernate.connection.password" value="crm001c" />
 			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.transaction.manager_lookup_class" value="com.atomikos.icatch.jta.hibernate3.TransactionManagerLookup"/>
 		</properties>
 		
 	</persistence-unit>
