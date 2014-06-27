@@ -3,7 +3,7 @@ package com.fideuram.crm.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+//@Entity
 public class TipoComunicazione {
 	
 	@Id

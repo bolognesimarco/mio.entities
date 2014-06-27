@@ -8,7 +8,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-@Entity
+//@Entity
 @DiscriminatorValue("UtenteCRM")
 public class UtenteCRM extends AttoreCRM{
 	
